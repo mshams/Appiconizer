@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="appiconizer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/appiconizer_jar</output-path>
+    <root id="archive" name="appiconizer.jar">
+      <element id="module-output" name="appiconizer" />
+    </root>
+  </artifact>
+</component>
