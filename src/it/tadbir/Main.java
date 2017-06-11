@@ -7,16 +7,21 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.coobird.thumbnailator.Thumbnails;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.prefs.Preferences;
 
 public class Main extends Application {
+    public final static String VER = "1.1";
     private final String STR_PATH = "strPath";
     private final String APP_NAME = "Appiconizer";
     protected int[] sizes = new int[]{10, 16, 24, 29, 32, 36, 48, 50, 57, 58, 60, 72, 76, 100, 114, 120, 128, 144, 152, 256, 512, 1024};
@@ -44,6 +49,9 @@ public class Main extends Application {
             ui.btnNone.setOnMouseClicked(evtLinks);
             ui.btnInvert.setOnMouseClicked(evtLinks);
 
+            root.setOnDragOver(evtDrag);
+            root.setOnDragDropped(evtDrop);
+
             //set init values
             prefs = Preferences.userRoot().node(this.getClass().getName());
             ui.txtPath.setText(prefs.get(STR_PATH, ""));
@@ -54,10 +62,36 @@ public class Main extends Application {
                 ui.grp.getChildren().add(ch);
             }
 
+            ui.txtLabel.setText(String.format(Locale.ENGLISH, ui.txtLabel.getText(), VER));
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    protected EventHandler<? super DragEvent> evtDrag = new EventHandler<DragEvent>() {
+        @Override
+        public void handle(DragEvent event) {
+            if (event.getDragboard().hasFiles()) {
+                event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+            }
+            event.consume();
+        }
+    };
+
+    protected EventHandler<? super DragEvent> evtDrop = new EventHandler<DragEvent>() {
+        @Override
+        public void handle(DragEvent event) {
+            Dragboard db = event.getDragboard();
+            boolean success = false;
+            if (db.hasFiles()) {
+                setPath(db.getFiles().get(0));
+                success = true;
+            }
+            event.setDropCompleted(success);
+            event.consume();
+        }
+    };
 
     protected EventHandler<MouseEvent> evtGo = new EventHandler<MouseEvent>() {
         @Override
@@ -129,10 +163,20 @@ public class Main extends Application {
 
             File file = chooser.showOpenDialog(new Stage());
 
-            ui.txtPath.setText(file.getAbsolutePath());
-            ui.btnGo.setDisable(false);
+            setPath(file);
         }
     };
+
+    private void setPath(File file) {
+        String fileExtension = "";
+        String fileName = file.getName();
+        if (fileName.contains(".") && fileName.lastIndexOf(".") != 0) {
+            fileExtension = fileName.substring(fileName.lastIndexOf(".") + 1);
+        }
+        if (!fileExtension.equals("png")) return;
+        ui.txtPath.setText(file.getAbsolutePath());
+        ui.btnGo.setDisable(false);
+    }
 
     public static void main(String[] args) {
         launch(args);

@@ -14,6 +14,8 @@ package it.tadbir;
  * Sample Skeleton for 'mainView.fxml' Controller Class
  * <p>
  * Sample Skeleton for 'mainView.fxml' Controller Class
+ * <p>
+ * Sample Skeleton for 'mainView.fxml' Controller Class
  */
 /**
  * Sample Skeleton for 'mainView.fxml' Controller Class
@@ -22,6 +24,7 @@ package it.tadbir;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
 
@@ -39,6 +42,9 @@ public class Controller implements javafx.fxml.Initializable {
 
     @FXML // fx:id="txtPath"
     protected TextField txtPath; // Value injected by FXMLLoader
+
+    @FXML
+    protected Label txtLabel;
 
     @FXML // fx:id="btnBrowse"
     protected Button btnBrowse; // Value injected by FXMLLoader

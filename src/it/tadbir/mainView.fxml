@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="it.tadbir.Controller">
-    <Label layoutX="14.0" layoutY="14.0" text="Appiconizer V1.0 by mshams.ir"/>
-    <Label layoutX="14.0" layoutY="31.0"
-           text="Select your icon *.png 512x512 or 1024x1024 to achieve a better quality."/>
-    <TextField fx:id="txtPath" layoutX="14.0" layoutY="64.0" prefHeight="25.0" prefWidth="373.0"
-               AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="189.0"/>
-    <Button fx:id="btnBrowse" layoutX="391.0" layoutY="64.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0"
-            text="Browse" AnchorPane.rightAnchor="126.0"/>
-    <Button fx:id="btnGo" layoutX="453.0" layoutY="64.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0"
-            text="Appiconize" AnchorPane.rightAnchor="15.0" disable="true"/>
-    <TilePane fx:id="grp" hgap="10" layoutX="14.0" layoutY="131.0" minHeight="115.0" minWidth="540.0" prefColumns="0"
-              prefHeight="115.0" prefRows="0" prefWidth="540.0" style="-fx-background-color: #EEEEEE;" vgap="10"
-              AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="15.0"
-              AnchorPane.topAnchor="131.0">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.TilePane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.tadbir.Controller">
+    <Label fx:id="txtLabel" layoutX="14.0" layoutY="14.0" text="Appiconizer V%s by mshams.ir" />
+    <Label layoutX="14.0" layoutY="31.0" text="Select your icon *.png 512x512 or 1024x1024 to achieve a better quality." />
+    <TextField fx:id="txtPath" layoutX="14.0" layoutY="64.0" prefHeight="25.0" prefWidth="373.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="189.0" />
+    <Button fx:id="btnBrowse" layoutX="391.0" layoutY="64.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" text="Browse" AnchorPane.rightAnchor="126.0" />
+    <Button fx:id="btnGo" disable="true" layoutX="453.0" layoutY="64.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Appiconize" AnchorPane.rightAnchor="15.0" />
+    <TilePane fx:id="grp" hgap="10" layoutX="14.0" layoutY="131.0" minHeight="115.0" minWidth="540.0" prefColumns="0" prefHeight="115.0" prefRows="0" prefWidth="540.0" style="-fx-background-color: #EEEEEE;" vgap="10" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="131.0">
         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
         </padding>
     </TilePane>
-    <Hyperlink fx:id="btnAll" layoutX="14.0" layoutY="100.0" text="Select All"/>
-    <Hyperlink fx:id="btnNone" layoutX="92.0" layoutY="100.0" text="Select None"/>
-    <Hyperlink fx:id="btnInvert" layoutX="189.0" layoutY="100.0" text="Invert Selection"/>
+    <Hyperlink fx:id="btnAll" layoutX="14.0" layoutY="100.0" text="Select All" />
+    <Hyperlink fx:id="btnNone" layoutX="92.0" layoutY="100.0" text="Select None" />
+    <Hyperlink fx:id="btnInvert" layoutX="189.0" layoutY="100.0" text="Invert Selection" />
 </AnchorPane>
